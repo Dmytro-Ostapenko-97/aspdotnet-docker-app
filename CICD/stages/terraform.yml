@@ -1,0 +1,10 @@
+stages:
+- stage: Terraform 
+  displayName: Terraform infrastructure creation
+  jobs:
+  - job: Terraform
+    displayName: Terraform infrastructure creation
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - template: steps/infrastructure.yml

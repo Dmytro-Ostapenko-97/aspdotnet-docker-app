@@ -1,0 +1,19 @@
+trigger:
+- master
+- azure-pipelines
+
+resources:
+- repo: self
+
+variables:
+- group: joint-group
+- group: dev-group
+
+stages:
+- template: CICD/stages/build.yml
+
+- template: CICD/stages/terraform.yml
+
+- template: CICD/stages/deploy.yml
+
+- template: CICD/stages/test.yml

@@ -1,0 +1,16 @@
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+- group: joint-group
+- group: prod-group
+
+stages:
+- template: CICD/stages/build.yml
+
+- template: CICD/stages/terraform.yml
+
+- template: CICD/stages/deploy.yml

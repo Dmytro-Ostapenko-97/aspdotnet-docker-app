@@ -1,0 +1,10 @@
+stages:
+- stage: Test 
+  displayName: Test
+  jobs:
+  - job: Test
+    displayName: Test deploy success
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - template: steps/test.yml

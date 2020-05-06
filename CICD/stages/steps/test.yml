@@ -1,0 +1,13 @@
+steps:
+- task: CmdLine@2
+  displayName: Wait for web app deploy
+  inputs:
+    script: 'sleep 2m'
+- task: CmdLine@2
+  displayName: Curl web app
+  inputs:
+    script: 'curl https://aspdotnet-app-service-$(groupName).azurewebsites.net/ >> test.html'
+- task: Bash@3
+  displayName: Run test
+  inputs:
+    filePath: '$(Build.SourcesDirectory)/CICD/test/test.sh'

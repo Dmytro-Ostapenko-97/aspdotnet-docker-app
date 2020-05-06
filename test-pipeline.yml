@@ -1,0 +1,19 @@
+trigger:
+- master
+- features/*
+
+resources:
+- repo: self
+
+variables:
+- group: joint-group
+- group: test-group
+
+stages:
+- template: CICD/stages/build.yml
+
+- template: CICD/stages/terraform.yml
+
+- template: CICD/stages/deploy.yml
+
+- template: CICD/stages/test.yml

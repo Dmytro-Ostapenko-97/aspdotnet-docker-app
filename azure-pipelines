@@ -1,0 +1,30 @@
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  dockerRegistryServiceConnection: '737bd3df-5f5d-4366-b22d-94a34704ab06'
+  imageRepository: 'aspdotnetdockerapp'
+  containerRegistry: 'aspdotnet.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+  terraformVersion: '0.12.18'
+  azureServiceArm: 'Azure for Students(0c39ed48-8a5f-4d60-8920-365087268f38)'
+  workingDirectory: $(System.DefaultWorkingDirectory)
+  backendResourceGroupName: 'aspdotnet-docker-app'
+  backendStorageAccountName: 'tstate4924'
+  backendContainerName: 'tstate'
+  backendKey: 'terraform.tfstate'  
+  webAppName: 'aspdotnet-app-service'
+  connectionType: 'AzureRM'
+  appType: 'webAppContainer'
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- template: CICD/stages/terraform.yml
+
+- template: CICD/stages/build.yml
+
+- template: CICD/stages/deploy.yml

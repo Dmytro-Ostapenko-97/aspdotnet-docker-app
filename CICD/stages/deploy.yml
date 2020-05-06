@@ -1,0 +1,11 @@
+stages:
+- stage: Deploy
+  displayName: Deploy 
+  jobs:
+  - job: Deploy
+    displayName: Deploy container from container registry to App service
+    condition: in(variables['groupName'], 'prod', 'dev')
+    pool:
+      vmImage: $(vmImageName)
+    steps: 
+    - template: steps/app-deploy.yml

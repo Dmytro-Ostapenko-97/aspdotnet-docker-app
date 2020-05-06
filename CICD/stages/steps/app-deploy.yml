@@ -1,0 +1,11 @@
+steps: 
+- task: AzureRmWebAppDeployment@4
+  displayName: Web App deploy
+  inputs:
+    ConnectionType: $(connectionType)
+    azureSubscription: $(azureServiceArm)
+    appType: $(appType)	
+    WebAppName: $(webAppName)
+    DockerNamespace: $(containerRegistry)
+    DockerRepository: $(imageRepository)
+    DockerImageTag: $(tag)

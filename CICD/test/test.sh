@@ -1,6 +1,6 @@
-result=`grep "Dima" test.html | wc -l`
+result=`grep "AspDotNet" test.html | wc -l`
 #echo $result
-if [ "$result" = 1 ]
+if [ "$result" -gt 1 ]
   then 
     echo "Test Passed"
   else

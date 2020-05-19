@@ -36,6 +36,22 @@ XML
   }
 }
 
+output "webtest_id" {
+  value = azurerm_application_insights_web_test.web-test.id
+}
+
+#output "webtest_provisioning_state" {
+#  value = azurerm_application_insights_web_test.web-test.provisioning_state
+#}
+
+output "webtests_synthetic_id" {
+  value = azurerm_application_insights_web_test.web-test.synthetic_monitor_id
+}
+
 output "instrumentation_key" {
   value = azurerm_application_insights.app-insights.instrumentation_key
 }
+
+output "app_id" {
+  value = azurerm_application_insights.app-insights.app_id
+}  

@@ -36,7 +36,6 @@ resource "azurerm_app_service" "app_service" {
   site_config {
     linux_fx_version          = "DOCKER|aspdotnet.azurecr.io/aspdotnetdockerapp-${var.env}:latest"
     use_32_bit_worker_process = true
-    app_command_line          = "set APPINSIGHTS_INSTRUMENTATIONKEY=${azurerm_application_insights.app-insights.instrumentation_key}"
   }
  
   identity {

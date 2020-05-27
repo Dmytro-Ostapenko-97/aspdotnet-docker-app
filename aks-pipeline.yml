@@ -14,7 +14,5 @@ stages:
 
 - template: CICD/stages/terraform.yml
 
-- template: CICD/stages/deploy.yml
-
-- template: CICD/stages/test.yml
+- template: CICD/stages/kubernetes.yml
 

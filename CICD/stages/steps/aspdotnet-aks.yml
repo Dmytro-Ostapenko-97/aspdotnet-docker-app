@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aspdotnet-deployment
+  labels:
+    app: aspdotnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aspdotnet
+  template:
+    metadata:
+      labels:
+        app: aspdotnet
+    spec:
+      containers:
+      - name: aspdotnet
+        image: dostapenko.azurecr.io/aspdotnetdockerapp-dev:19
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aspdotnet-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: aspdotnet
+

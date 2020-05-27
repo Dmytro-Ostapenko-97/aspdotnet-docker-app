@@ -6,7 +6,11 @@ provider "azurerm" {
    
 # Configuration a Terraform backend   
 terraform { 
-  backend "azurerm" {                        
+  backend "azurerm" {                    
+#    resource_group_name   = "aspdotnet-docker-app"
+#    storage_account_name  = "tstate4924"
+#    container_name        = "tstate"                 
+#    key                   = "terraform.tfstate"       
   }    
 }  
                  

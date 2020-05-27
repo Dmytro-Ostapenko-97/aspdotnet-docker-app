@@ -7,7 +7,10 @@ steps:
   displayName: Copy config files
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/CICD/terraform'
-    Contents: '**'
+    Contents: |
+      **/*
+      !app-insight.tf
+      !service-plan.tf
     TargetFolder: '$(System.DefaultWorkingDirectory)'
 - task: TerraformTaskV1@0
   displayName: Terraform Init

@@ -10,10 +10,13 @@ variables:
 - group: dev-group
 
 stages:
-- template: CICD/stages/build.yml
+#- template: CICD/stages/build.yml
 
 - template: CICD/stages/terraform.yml
 
-- template: CICD/stages/deploy.yml
+- template: CICD/stages/kubernetes.yml
 
-- template: CICD/stages/test.yml
+#- template: CICD/stages/deploy.yml
+
+#- template: CICD/stages/test.yml
+

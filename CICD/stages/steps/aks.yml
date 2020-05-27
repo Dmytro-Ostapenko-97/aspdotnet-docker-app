@@ -1,0 +1,22 @@
+steps:
+- task: CopyFiles@2
+  displayName: Copy config files
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/CICD/stages/steps'
+    Contents: |
+      aspdotnet-aks.yml
+    TargetFolder: '$(System.DefaultWorkingDirectory)'
+- task: Kubernetes@1
+  displayName: Kubectl deployment creation
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: $(azureServiceArm)
+    azureResourceGroup: 'aspdotnet-resources-$(groupName)'
+    kubernetesCluster: 'aspdotnet-aks-app'
+    command: 'apply'
+    arguments: '-f aspdotnet-aks.yml'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
+    azureSubscriptionEndpointForSecrets: $(azureServiceArm)
+    azureContainerRegistry: $(containerRegistry)
+    secretName: 'secret'

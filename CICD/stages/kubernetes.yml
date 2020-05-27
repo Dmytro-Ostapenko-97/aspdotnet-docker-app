@@ -1,0 +1,10 @@
+stages:
+- stage: Kubernetes 
+  displayName: Kubernetes deployment creation
+  jobs:
+  - job: Kubernetes
+    displayName: Kubernetes deployment creation
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - template: steps/aks.yml

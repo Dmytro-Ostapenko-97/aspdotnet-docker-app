@@ -19,4 +19,3 @@ COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "DotNetCoreSqlDb.dll"]
 ARG MyDbConnection
 ENV ConnectionStrings__MyDbConnection=$MyDbConnection
-#ENV ConnectionStrings__MyDbConnection="Server=tcp:aspdonte-docker-app.database.windows.net,1433;Initial Catalog=test;Persist Security Info=False;User ID=admindod;Password=Rekord32;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
